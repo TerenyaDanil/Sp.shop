@@ -339,7 +339,7 @@
 		
 	</main>
 
-	{# <script>
+	<script>
 		const headerAmount = document.querySelector('.shop-header__amount');	
 		const stockItem = document.querySelectorAll('.stock-basket__item');
 		const basketPrice = document.querySelectorAll('.basket__price');
@@ -368,6 +368,6 @@
 				}
 			});
 		})
-	</script> #}
+	</script>
 
 {% endblock content %}
