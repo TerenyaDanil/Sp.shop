@@ -1,0 +1,483 @@
+//////////////////// Payment ////////////////////
+
+.legend {
+	position: relative;
+
+	display: flex;
+	justify-content: space-between;
+
+	margin-bottom: 55px;
+
+	// .legend__item
+	&__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	// .legend__line
+	&__line {
+		position: absolute;
+		top: 9px;
+		left: 20px;
+
+		height: 1px;
+
+		z-index: -1;
+
+		&-gray {
+			background-color: #d5d5d5;
+			width: calc(100% - 40px);
+		}
+		&-blue {
+			background-color: #3366ff;
+			transition: all 0.1s ease 0s;
+			&.first {
+				width: 32.5%;
+			}
+			&.second {
+				width: 65.5%;
+			}
+			&.third {
+				width: 97.5%;
+			}
+		}
+	}
+}
+
+.item-legend {
+	&._finish {
+		.item-legend__num {
+			color: #fff;
+			background-color: #3366ff;
+			border: 1px solid #3366ff;
+		}
+	}
+
+	&._actual {
+		.item-legend__num {
+			color: #000;
+			border: 1px solid #3366ff;
+		}
+	}
+
+	&:last-child {
+		.item-legend__num {
+			&:after {
+				display: none;
+			}
+		}
+	}
+
+	// .item-legend__num
+
+	&__num {
+		position: relative;
+
+		width: 18px;
+		height: 18px;
+
+		color: #d5d5d5;
+		font-size: 10px;
+		font-weight: 500;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		border-radius: 50%;
+
+		border: 1px solid #d5d5d5;
+		background-color: #fff;
+
+		margin-bottom: 9px;
+	}
+
+	// .item-legend__title
+
+	&__title {
+	}
+}
+
+.payment {
+	padding: 60px 65px 60px 60px;
+	flex: 1 auto;
+}
+
+.billing {
+	// .billing
+	display: flex;
+	justify-content: center;
+
+	// .billing__wrap
+
+	&__wrap {
+		width: 627px;
+	}
+
+	// .billing__title
+
+	&__title {
+		font-size: 18px;
+		margin-bottom: 36px;
+	}
+
+	// .billing__switch
+
+	&__switch {
+		display: flex;
+		margin-bottom: 40px;
+	}
+
+	// .billing__card
+
+	&__card {
+		margin-bottom: 40px;
+	}
+}
+
+.switch-billing {
+	// .switch-billing
+	width: 352px;
+
+	display: flex;
+	justify-content: space-between;
+
+	// .switch-billing__item
+
+	&__item {
+		display: flex;
+		align-items: center;
+	}
+}
+
+.card-billing {
+	// .card-billing__wrap
+
+	&__form {
+		position: relative;
+		left: -30px;
+
+		margin-bottom: 45px;
+	}
+
+	// .card-billing__accept
+
+	&__accept {
+		margin-bottom: 12px;
+
+		a {
+			font-weight: 700;
+		}
+		&:last-child {
+			margin-bottom: 0px;
+		}
+	}
+
+	// .card-billing__btn
+
+	&__btn {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+.card-form {
+	// .card-form
+
+	width: 550px;
+	box-sizing: border-box;
+
+	background: #ffffff;
+	border: 1px solid #cfcfcf;
+	box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.19);
+
+	border-radius: 5px;
+
+	padding: 20px 30px 38px;
+
+	// .card-form__item
+
+	&__item {
+		label {
+			display: block;
+
+			font-size: 12px;
+			font-weight: 500;
+			line-height: 24px;
+		}
+	}
+
+	// .card-form__name
+
+	&__name {
+		margin-bottom: 15px;
+
+		input {
+			width: 100%;
+			text-transform: uppercase;
+			&::placeholder {
+				text-transform: none;
+			}
+		}
+	}
+
+	// .card-form__number
+
+	&__number {
+		margin-bottom: 20px;
+
+		.card-form__item {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		label {
+			width: 100%;
+		}
+		input {
+			max-width: 100px;
+			margin-right: 30px;
+			flex-basis: 20%;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+
+	// .card-form__info
+
+	&__info {
+		display: flex;
+		.card-form__item {
+			flex-basis: 20%;
+			input {
+				max-width: 100px;
+			}
+			&:first-child {
+				margin-right: 30px;
+			}
+		}
+	}
+}
+
+//////////////////// Basket ////////////////////
+
+.basket {
+	// .basket__stock
+
+	width: 410px;
+
+	border-left: 1px solid #cfcfcf;
+
+	&__stock {
+		border-bottom: 1px solid #cfcfcf;
+		padding: 40px;
+
+		overflow-y: scroll;
+		transition: all 0.3s ease 0s;
+		&::-webkit-scrollbar-track {
+			border-radius: 4px;
+			height: 10px;
+		}
+		&::-webkit-scrollbar {
+			width: 6px;
+			height: 10px;
+		}
+		&::-webkit-scrollbar-thumb {
+			border-radius: 4px;
+			background: rgba($color: #000, $alpha: 0.1);
+			transition: all 0.3s ease 0s;
+		}
+		&:hover {
+			&::-webkit-scrollbar-thumb {
+				background: rgba($color: #000, $alpha: 0.2);
+			}
+		}
+	}
+
+	// .basket__promo
+
+	&__promo {
+		border-bottom: 1px solid #cfcfcf;
+		padding: 40px;
+	}
+
+	// .basket__price
+
+	&__price {
+		padding: 45px 55px 0px 40px;
+	}
+}
+
+.stock-basket {
+	// .stock-basket
+
+	height: 372px;
+	box-sizing: border-box;
+	// .stock-basket__title
+
+	&__title {
+		font-size: 18px;
+		font-weight: 700;
+
+		margin-bottom: 30px;
+	}
+
+	// .stock-basket__item
+
+	&__item {
+		position: relative;
+
+		display: flex;
+
+		margin-bottom: 30px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.item-stock {
+	// .item-stock__img
+
+	&__img {
+		margin-right: 12px;
+		img {
+			width: 100px;
+			height: 100px;
+			object-fit: contain;
+		}
+	}
+
+	// .item-stock__info
+
+	&__info {
+		width: 150px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	// .item-stock__close
+
+	&__close {
+		position: absolute;
+		right: 0;
+
+		cursor: pointer;
+	}
+
+	// .item-stock__name
+
+	&__name {
+		margin-bottom: 15px;
+		line-height: 16px;
+	}
+
+	// .item-stock__amount
+
+	&__amount {
+		padding-bottom: 20px;
+	}
+}
+
+.amount-stock {
+	// .amount-stock
+
+	display: flex;
+	justify-content: space-between;
+
+	// .amount-stock__num
+	&__num {
+		display: flex;
+		justify-content: space-between;
+		width: 83px;
+	}
+
+	// .amount-stock__minus
+
+	&__minus {
+		cursor: pointer;
+	}
+
+	// .amount-stock__plus
+
+	&__plus {
+		cursor: pointer;
+	}
+
+	// .amount-stock__value
+
+	&__value {
+	}
+}
+
+.promo-basket {
+	// .promo__title
+
+	&__title {
+		font-size: 18px;
+		margin-bottom: 27px;
+	}
+
+	// .promo__form
+
+	&__form {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	// .promo__input
+
+	&__input {
+		margin-right: 10px;
+		flex: 1 auto;
+	}
+
+	// .promo__btn
+
+	&__btn {
+	}
+}
+
+.price-busket {
+	// .price-busket__text
+
+	&__text {
+		display: flex;
+		justify-content: space-between;
+
+		font-size: 14px;
+
+		margin-bottom: 13px;
+	}
+
+	// .price-busket__total
+
+	&__total {
+		display: flex;
+		justify-content: space-between;
+
+		font-size: 18px;
+		font-weight: 700;
+	}
+}
+
+//////////////////// Media ////////////////////
+
+@media only screen and (max-width: 1199px) {
+	.basket {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.billing {
+		padding: 0 16px 0 20px;
+		justify-content: space-between;
+	}
+	.billing__wrap {
+		width: 100%;
+	}
+}

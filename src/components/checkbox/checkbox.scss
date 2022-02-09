@@ -1,0 +1,78 @@
+///////// checkbox and radio //////////
+
+input[type="checkbox"],
+input[type="radio"] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+	position: relative;
+	display: flex;
+	align-items: center;
+
+	cursor: pointer;
+	&::before {
+		content: "";
+		position: relative;
+		width: 18px;
+		height: 18px;
+		background: #ffffff;
+		border: 1px solid #cfcfcf;
+		margin-right: 9px;
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		left: 12px;
+		top: 50%;
+		transform: translate(0, -50%);
+		width: 0;
+		height: 0;
+		background: #3366ff;
+
+		transition: all 0.1s ease 0s;
+	}
+}
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + label {
+	&::after {
+		width: 8px;
+		height: 8px;
+
+		left: 6px;
+	}
+}
+
+///////// text input //////////
+
+input[type="radio"] + label {
+	&:before {
+		border-radius: 50%;
+	}
+	&::after {
+		border-radius: 50%;
+	}
+}
+
+.input-item {
+	width: 100%;
+
+	color: #000;
+	font-size: 14px;
+	line-height: 24px;
+
+	background: #ededf1;
+	border-radius: 3px;
+	border: none;
+	padding: 8px 0 8px 10px;
+	border: 1px solid transparent;
+	&:focus-visible {
+		outline: 1px solid rgba($color: #000, $alpha: 0.4);
+		z-index: 10;
+	}
+	&::placeholder {
+		color: #8e90a6;
+	}
+}

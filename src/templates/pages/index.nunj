@@ -1,0 +1,429 @@
+{% extends "../ext/base.nunj" %}
+
+{% from "../../components/menu/menu.nunj" import menu %}
+{% from "../../components/button/button.nunj" import button %}
+{% from "../../components/checkbox/checkbox.nunj" import checkbox %}
+{% from "../../components/icon/icon.nunj" import icon %}
+
+{# Пример расширения существующего блока #}
+{# Например можно использовать для добавления уникальных тайтлов для каждой страницы #}
+{% block title %}HTML-Test{% endblock title %}
+
+
+
+{% block content %}
+	{% include '../../components/header/header.nunj' %}
+
+	<main class="main">
+		<section class="payment">
+			<div class="payment__legend legend">
+				<div class="legend__item item-legend _finish">
+					<div class="item-legend__num">
+						1
+					</div>
+					<div class="item-legend__title">
+						Account
+					</div>
+				</div>
+				<div class="legend__item item-legend _finish">
+					<div class="item-legend__num">
+						2
+					</div>
+					<div class="item-legend__title">
+						Shipping
+					</div>
+				</div>
+				<div class="legend__item item-legend _actual">
+					<div class="item-legend__num">
+						3
+					</div>
+					<div class="item-legend__title">
+						Billing
+					</div>
+				</div>
+				<div class="legend__item item-legend">
+					<div class="item-legend__num">
+						4
+					</div>
+					<div class="item-legend__title">
+						Review
+					</div>
+				</div>
+				<div class="legend__line legend__line-gray">
+				</div>
+				<div class="legend__line legend__line-blue first second">
+				</div>
+			</div>
+			<div class="payment__billing billing">
+				<div class="billing__wrap">
+					<h3 class="billing__title">
+						Billing Information
+					</h3>
+					<div class="billing__switch switch-billing">
+						<div class="switch-billing__item">
+							{{ checkbox({
+								type: 'Radio',
+								id: 'CreditCard',
+								name: 'Payment',
+								hasLabel: true,
+								labelText: 'Pay with Credit Card'
+								}) }}
+						</div>
+						<div class="switch-billing__item">
+							{{ checkbox({
+								type: 'Radio',
+								id: 'PayPal',
+								name: 'Payment'
+								}) }}
+							<label for="PayPal">
+								{{ icon({
+									iconName: 'paypal', 
+									attributes: 'viewBox="0 0 85 24" style="width: 85px; height: 24px; fill: #000;"'
+								}) }}
+							</label>
+						</div>
+					</div>
+					<div class="billing__card card-billing">
+						<div class="card-billing__form card-form">
+							<div class="card-form__name">
+								<div class="card-form__item">
+									<label for="name">Name on card</label>
+									<input class="input-item" type="text" id="name" maxlength="20" placeholder="Placeholder Text">
+								</div>
+							</div>
+							<div class="card-form__number">
+								<div class="card-form__item">
+									<label for="card">Card number</label>
+									<input id="card" class="input-item" type="text" maxlength="4">
+									<input class="input-item" type="text" maxlength="4">
+									<input class="input-item" type="text" maxlength="4">
+									<input class="input-item" type="text" maxlength="4">
+								</div>
+							</div>
+							<div class="card-form__info">
+								<div class="card-form__item">
+									<label for="">Expire date</label>
+									<input class="input-item" type="text" maxlength="5">
+								</div>
+								<div class="card-form__item">
+									<label for="">CVV code</label>
+									<input class="input-item" type="text" maxlength="3">
+								</div>
+							</div>
+						</div>
+						<div class="card-billing__accept">
+							{{ checkbox({
+								type: 'checkbox',
+								id: 'SaveData',
+								hasLabel: true,
+								labelText: 'Save information of this credit card'
+								}) }}
+						</div>
+						<div class="card-billing__accept">
+							{{ checkbox({
+								type: 'checkbox',
+								id: 'Privacy',
+								hasLabel: true,
+								labelText: 'I accept the&nbsp;<a href="#">terms and comditions</a>&nbsp;and the&nbsp;<a href="#"> Privacy Policies </a>'
+								}) }}
+						</div>
+					</div>
+					<div class="card-billing__btn">
+							{{ button({
+							className: 'button-white',
+							children: 'Back'
+							}) }}
+							{{ button({
+							className: 'button-blue',
+							children: 'Check Out',
+							type: 'Submit'
+							}) }}
+						</div>
+					
+				</div>
+			</div>
+		</section>
+		<aside class="basket">
+			<div class="basket__stock stock-basket">
+				<h3 class="stock-basket__title">
+					My basket
+				</h3>
+				<div class="stock-basket__item item-stock">
+					<div class="item-stock__img">
+						<img src="assets/images/tovar1.png" alt="tovar1">
+					</div>
+					<div class="item-stock__info">
+						<div class="item-stock__name">
+							Amet minim mollit non 
+							deserunt ullamco est sit
+						</div>
+						<div class="item-stock__amount amount-stock">
+							<div class="amount-stock__num">
+								<div class="amount-stock__minus">
+									{{ icon({
+										iconName: 'minus',
+										attributes: 'viewBox="0 0 21 20" style="width: 21px; height: 20px; fill: #000;"'
+									}) }}
+								</div>
+								<div class="amount-stock__value">
+									1
+								</div>
+								<div class="amount-stock__plus">
+									{{ icon({
+										iconName: 'plus',
+										attributes: 'viewBox="0 0 21 20" style="width: 21px; height: 20px; fill: #000;"'
+									}) }}
+								</div>
+							</div>
+							<div class="amount-stock__price">
+								$ <span>525</span>
+							</div>
+						</div>
+					</div>
+					<div class="item-stock__close">
+						{{ icon({
+							iconName: 'close',
+							attributes: 'viewBox="0 0 18 18" style="width: 18px; height: 18px; fill: #000;"'
+						}) }}
+					</div>
+				</div>
+				<div class="stock-basket__item item-stock">
+					<div class="item-stock__img">
+						<img src="assets/images/tovar2.png" alt="tovar2">
+					</div>
+					<div class="item-stock__info">
+						<div class="item-stock__name">
+							Amet minim mollit non
+						</div>
+						<div class="item-stock__amount amount-stock">
+							<div class="amount-stock__num">
+								<div class="amount-stock__minus">
+									{{ icon({
+										iconName: 'minus',
+										attributes: 'viewBox="0 0 21 20" style="width: 21px; height: 20px; fill: #000;"'
+									}) }}
+								</div>
+								<div class="amount-stock__value">
+									1
+								</div>
+								<div class="amount-stock__plus">
+									{{ icon({
+										iconName: 'plus',
+										attributes: 'viewBox="0 0 21 20" style="width: 21px; height: 20px; fill: #000;"'
+									}) }}
+								</div>
+							</div>
+							<div class="amount-stock__price">
+								$ <span>525</span>
+							</div>
+						</div>
+					</div>
+					<div class="item-stock__close">
+						{{ icon({
+							iconName: 'close',
+							attributes: 'viewBox="0 0 18 18" style="width: 18px; height: 18px; fill: #000;"'
+						}) }}
+					</div>
+				</div>
+				<div class="stock-basket__item item-stock">
+					<div class="item-stock__img">
+						<img src="assets/images/tovar1.png" alt="tovar1">
+					</div>
+					<div class="item-stock__info">
+						<div class="item-stock__name">
+							Amet minim mollit non 
+							deserunt ullamco est sit
+						</div>
+						<div class="item-stock__amount amount-stock">
+							<div class="amount-stock__num">
+								<div class="amount-stock__minus">
+									{{ icon({
+										iconName: 'minus',
+										attributes: 'viewBox="0 0 21 20" style="width: 21px; height: 20px; fill: #000;"'
+									}) }}
+								</div>
+								<div class="amount-stock__value">
+									1
+								</div>
+								<div class="amount-stock__plus">
+									{{ icon({
+										iconName: 'plus',
+										attributes: 'viewBox="0 0 21 20" style="width: 21px; height: 20px; fill: #000;"'
+									}) }}
+								</div>
+							</div>
+							<div class="amount-stock__price">
+								$ <span>525</span>
+							</div>
+						</div>
+					</div>
+					<div class="item-stock__close">
+						{{ icon({
+							iconName: 'close',
+							attributes: 'viewBox="0 0 18 18" style="width: 18px; height: 18px; fill: #000;"'
+						}) }}
+					</div>
+				</div>
+				<div class="stock-basket__item item-stock">
+					<div class="item-stock__img">
+						<img src="assets/images/tovar2.png" alt="tovar2">
+					</div>
+					<div class="item-stock__info">
+						<div class="item-stock__name">
+							Amet minim mollit non
+						</div>
+						<div class="item-stock__amount amount-stock">
+							<div class="amount-stock__num">
+								<div class="amount-stock__minus">
+									{{ icon({
+										iconName: 'minus',
+										attributes: 'viewBox="0 0 21 20" style="width: 21px; height: 20px; fill: #000;"'
+									}) }}
+								</div>
+								<div class="amount-stock__value">
+									1
+								</div>
+								<div class="amount-stock__plus">
+									{{ icon({
+										iconName: 'plus',
+										attributes: 'viewBox="0 0 21 20" style="width: 21px; height: 20px; fill: #000;"'
+									}) }}
+								</div>
+							</div>
+							<div class="amount-stock__price">
+								$ <span>525</span>
+							</div>
+						</div>
+					</div>
+					<div class="item-stock__close">
+						{{ icon({
+							iconName: 'close',
+							attributes: 'viewBox="0 0 18 18" style="width: 18px; height: 18px; fill: #000;"'
+						}) }}
+					</div>
+				</div>
+			</div>
+			<div class="basket__promo promo-basket">
+				<h3 class="promo-basket__title">
+					Promo code
+				</h3>
+				<div class="promo-basket__form">
+					<div class="promo-basket__input">
+						<input type="text" class="input-item" name="promocode" placeholder="Placeholder Text">
+					</div>
+					<div class="promo-basket__btn">
+						{{ button({
+							className: 'button-blue',
+							children: 'Apply',
+							type: 'submit'
+						}) }}
+					</div>
+				</div>
+			</div>
+			<div class="basket__price price-busket">
+				<div id="subtotal" class="price-busket__text">
+					Subtotal <span>$1 050</span>
+				</div>
+				<div id="tax" class="price-busket__text">
+					Tax <span>$100</span>
+				</div>
+				<div id="shipping" class="price-busket__text">
+					Shipping <span>$250</span>
+				</div>
+				<div id="total" class="price-busket__total">
+					Total <span>$1 300</span>
+				</div>
+			</div>
+		</aside>
+
+		
+	</main>
+
+{% endblock content %}
+
+{# <script>
+
+			const headerAmount = document.querySelector('.shop-header__amount');	
+			const stockItem = document.querySelectorAll('.stock-basket__item');
+			const basketPrice = document.querySelectorAll('.basket__price');
+
+			headerAmount.innerText = stockItem.length;
+
+			stockItem.forEach (item => {
+				let value =  1;
+
+				item.querySelector('.item-stock__close').addEventListener("click", () =>  item.remove()); 
+				
+				item.querySelector('.amount-stock__plus').addEventListener("click", function(){ 
+					value = value + 1;
+					if (value >= 1) {
+						item.querySelector('.amount-stock__value').innerText = value;
+						item.querySelector('.amount-stock__price span').innerText = 525 * value;
+					}
+					
+				});
+
+				item.querySelector('.amount-stock__minus').addEventListener("click", function(){ 
+					value = value - 1;
+					if (value >= 1) {
+						item.querySelector('.amount-stock__value').innerText = value;
+						item.querySelector('.amount-stock__price span').innerText = 525 * value;
+					}
+				});
+			})
+		</script> #}
+
+
+{# <div style="padding:20px 0;">
+				{{ button({
+					className: 'button-custom',
+					children: 'Back'
+				}) }}
+			</div>
+
+			<div style="padding:20px 0;">
+
+				<h2 style="margin-bottom: 15px;">Пример использования циклов и функции range():</h2>
+
+				<div class="row">
+					{% for i in range(1, 1)  %}
+						<span>Сsdf:{{ i }}</span>
+					{% endfor %}
+				</div>
+
+			</div>
+
+			<div style="padding:20px 0;">
+
+				<h2 style="margin-bottom: 15px;">Пример с переменными:</h2>
+
+				{% for item in someData %}
+					<div style="margin-bottom: 15px;">
+						<h3>{{ item.title }}</h3>
+						<p>{{ item.text }}</p>
+					</div>
+				{% endfor %}
+
+			</div> #}
+
+			{# Пример с функциями #}
+			{# <p style="margin-bottom: 20px;">{{ addAwesome('Это текст для теста функций') }}</p>
+
+			{% if DEVELOP %}
+				<div class="debug" style="margin-bottom: 20px;">
+					<h2 style="margin-bottom: 15px;">Debug:</h2>
+					<p>Эта информация будет выводиться только при DEVELOP = true.</p>
+				</div>
+			{% endif %}
+
+			<div style="padding:20px 0;">
+
+				<h2 style="margin-bottom: 15px;">Пример использования SVG-спрайта</h2>
+
+				{{ icon({
+					iconName: 'chat',
+					className: 'icon',
+					attributes: 'viewBox="0 0 30 30" style="width: 100px; height: 100px; fill: #210121;"'
+				}) }}
+
+			</div> #}
