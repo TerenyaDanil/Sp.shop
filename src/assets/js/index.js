@@ -25,8 +25,57 @@ class ProjectApp {
 	}
 }
 
+const headerAmount = document.querySelector('.shop-header__amount');
+const stockItem = document.querySelectorAll('.stock-basket__item');
+
+headerAmount.innerText = stockItem.length;
+
+stockItem.forEach(item => {
+	let value = 1;
+
+	item.querySelector('.item-stock__close').addEventListener('click', () => item.remove());
+
+	item.querySelector('.amount-stock__plus').addEventListener('click', function () {
+		value = value + 1;
+		if (value >= 1) {
+			item.querySelector('.amount-stock__value').innerText = value;
+			item.querySelector('.amount-stock__price span').innerText = 525 * value;
+		}
+	});
+
+	item.querySelector('.amount-stock__minus').addEventListener('click', function () {
+		value = value - 1;
+		if (value >= 1) {
+			item.querySelector('.amount-stock__value').innerText = value;
+			item.querySelector('.amount-stock__price span').innerText = 525 * value;
+		}
+	});
+});
+
 global.ProjectApp = new ProjectApp();
 
 if (module.hot) {
-	module.hot.accept();
+	module.hot.dispose(() => {
+		stockItem.forEach(item => {
+			let value = 1;
+
+			item.querySelector('.item-stock__close').removeEventListener('click', () => item.remove());
+
+			item.querySelector('.amount-stock__plus').removeEventListener('click', function () {
+				value = value + 1;
+				if (value >= 1) {
+					item.querySelector('.amount-stock__value').innerText = value;
+					item.querySelector('.amount-stock__price span').innerText = 525 * value;
+				}
+			});
+
+			item.querySelector('.amount-stock__minus').removeEventListener('click', function () {
+				value = value - 1;
+				if (value >= 1) {
+					item.querySelector('.amount-stock__value').innerText = value;
+					item.querySelector('.amount-stock__price span').innerText = 525 * value;
+				}
+			});
+		});
+	});
 }
