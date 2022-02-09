@@ -339,91 +339,35 @@
 		
 	</main>
 
-{% endblock content %}
+	{# <script>
+		const headerAmount = document.querySelector('.shop-header__amount');	
+		const stockItem = document.querySelectorAll('.stock-basket__item');
+		const basketPrice = document.querySelectorAll('.basket__price');
 
-{# <script>
+		headerAmount.innerText = stockItem.length;
 
-			const headerAmount = document.querySelector('.shop-header__amount');	
-			const stockItem = document.querySelectorAll('.stock-basket__item');
-			const basketPrice = document.querySelectorAll('.basket__price');
+		stockItem.forEach (item => {
+			let value =  1;
 
-			headerAmount.innerText = stockItem.length;
-
-			stockItem.forEach (item => {
-				let value =  1;
-
-				item.querySelector('.item-stock__close').addEventListener("click", () =>  item.remove()); 
+			item.querySelector('.item-stock__close').addEventListener("click", () =>  item.remove()); 
+			
+			item.querySelector('.amount-stock__plus').addEventListener("click", function(){ 
+				value = value + 1;
+				if (value >= 1) {
+					item.querySelector('.amount-stock__value').innerText = value;
+					item.querySelector('.amount-stock__price span').innerText = 525 * value;
+				}
 				
-				item.querySelector('.amount-stock__plus').addEventListener("click", function(){ 
-					value = value + 1;
-					if (value >= 1) {
-						item.querySelector('.amount-stock__value').innerText = value;
-						item.querySelector('.amount-stock__price span').innerText = 525 * value;
-					}
-					
-				});
+			});
 
-				item.querySelector('.amount-stock__minus').addEventListener("click", function(){ 
-					value = value - 1;
-					if (value >= 1) {
-						item.querySelector('.amount-stock__value').innerText = value;
-						item.querySelector('.amount-stock__price span').innerText = 525 * value;
-					}
-				});
-			})
-		</script> #}
+			item.querySelector('.amount-stock__minus').addEventListener("click", function(){ 
+				value = value - 1;
+				if (value >= 1) {
+					item.querySelector('.amount-stock__value').innerText = value;
+					item.querySelector('.amount-stock__price span').innerText = 525 * value;
+				}
+			});
+		})
+	</script> #}
 
-
-{# <div style="padding:20px 0;">
-				{{ button({
-					className: 'button-custom',
-					children: 'Back'
-				}) }}
-			</div>
-
-			<div style="padding:20px 0;">
-
-				<h2 style="margin-bottom: 15px;">Пример использования циклов и функции range():</h2>
-
-				<div class="row">
-					{% for i in range(1, 1)  %}
-						<span>Сsdf:{{ i }}</span>
-					{% endfor %}
-				</div>
-
-			</div>
-
-			<div style="padding:20px 0;">
-
-				<h2 style="margin-bottom: 15px;">Пример с переменными:</h2>
-
-				{% for item in someData %}
-					<div style="margin-bottom: 15px;">
-						<h3>{{ item.title }}</h3>
-						<p>{{ item.text }}</p>
-					</div>
-				{% endfor %}
-
-			</div> #}
-
-			{# Пример с функциями #}
-			{# <p style="margin-bottom: 20px;">{{ addAwesome('Это текст для теста функций') }}</p>
-
-			{% if DEVELOP %}
-				<div class="debug" style="margin-bottom: 20px;">
-					<h2 style="margin-bottom: 15px;">Debug:</h2>
-					<p>Эта информация будет выводиться только при DEVELOP = true.</p>
-				</div>
-			{% endif %}
-
-			<div style="padding:20px 0;">
-
-				<h2 style="margin-bottom: 15px;">Пример использования SVG-спрайта</h2>
-
-				{{ icon({
-					iconName: 'chat',
-					className: 'icon',
-					attributes: 'viewBox="0 0 30 30" style="width: 100px; height: 100px; fill: #210121;"'
-				}) }}
-
-			</div> #}
+{% endblock content %}
